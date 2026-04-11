@@ -7,17 +7,17 @@ import AdminSettings from "../pages/admin/AdminSettings"
 import Login from "../pages/Login"
 import StudentDashboard from "../pages/students/StudentDashboard"
 import Courses from "../pages/Courses"
-import Signup from "../pages/Signup"
 import AuthCard from "../pages/AuthCArd"
+import AdminLogin from "../pages/admin/AdminLogin"
+import Home from "../pages/Home"
 
 const Routing = () => {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/" element={<Login />} />
                     <Route path="/auth" element={<AuthCard />} />
+                    <Route path="/admin/adminLogin" element={<AdminLogin />} />
                     <Route path="/admin/dashboard" element={<AdminDashboard />} />
                     <Route path="/admin/students" element={<AdminStudents />} />
                     <Route path="/admin/courses" element={<AdminCourses />} />
@@ -26,6 +26,7 @@ const Routing = () => {
 
                     <Route path="/student/dashboard" element={<StudentDashboard />} />
                     <Route path="/courses" element={<Courses />} />
+                    <Route path="/" element={<Home />} />
                 </Routes>
             </BrowserRouter>
         </>

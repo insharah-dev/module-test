@@ -10,7 +10,7 @@ export function PublicNavbar() {
   return (
     <nav className="sticky top-0 z-50 border-b shadow-lg border-gray-200 backdrop-blur-md">
       <div className="container flex px-6 h-16 items-center justify-between">
-        <Link to="/home" className="flex items-center gap-2 font-bold text-lg">
+        <Link to="/" className="flex items-center gap-2 font-bold text-lg">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-500 text-white">
             <GraduationCap className="h-6 w-6" />
           </div>
@@ -19,7 +19,7 @@ export function PublicNavbar() {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-6">
-          <Link to={'/home'}
+          <Link to={'/'}
             className="text-md font-bold text-gray-500 hover:text-red-500">
             Home
           </Link>
@@ -28,10 +28,10 @@ export function PublicNavbar() {
             Courses
           </Link>
 
-          <Link to="/student/dashboard">
+          <Link to="/auth">
             <button className='px-3 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-md font-medium'>Student Login</button>
           </Link>
-          <Link to="/admin/dashboard">
+          <Link to="/admin/AdminLogin">
             <button className='px-3 py-1.5 text-white rounded-lg border bg-red-500 text-md font-medium'>Admin Login</button>
           </Link>
         </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { client } from "../config/Supabase";
+import { client } from "../config/supabase";
 import { MdAccessTime } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import toast from "react-hot-toast";

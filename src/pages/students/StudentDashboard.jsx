@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { BookOpen, ClipboardList, FileText } from "lucide-react";
-import { client } from "../../config/Supabase";
+import { client } from "../../config/supabase";
 
 const navItems = [
   { label: "My Courses", to: "/student/dashboard", icon: <BookOpen /> },
