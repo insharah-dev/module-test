@@ -19,39 +19,47 @@ export default function StudentDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const storedUser = JSON.parse(localStorage.getItem("student"));
+        const storedUser = JSON.parse(localStorage.getItem("student") || "{}");
 
         if (!storedUser?.cnic) return;
 
         setUser(storedUser);
 
+        const student_id = storedUser.id;
+
         const cnic = storedUser.cnic;
 
-        // 2️⃣ Courses
-        const { data: courses, error: courseError } = await client
+        const { data: courses, error } = await client
           .from("applications")
           .select("*")
           .eq("cnic", cnic);
 
-        if (!courseError) {
+        console.log("cnic:", cnic);
+        console.log("COURSES:", courses, error);
+
+        if (!error) {
           setEnrolledCourses(courses || []);
         }
 
-        // 3️⃣ Pending Leaves
-        const { data: pending } = await client
+        // ✅ PENDING LEAVES
+        const { data: pending, error: pendingError } = await client
           .from("leaves")
           .select("id")
-          .eq("cnic", cnic)
+          .eq("student_id", student_id)
           .eq("status", "Pending");
+
+        console.log("Pending:", pending, pendingError); // DEBUG
 
         setPendingLeaves(pending?.length || 0);
 
-        // 4️⃣ Approved Leaves
-        const { data: approved } = await client
+        // ✅ APPROVED LEAVES
+        const { data: approved, error: approvedError } = await client
           .from("leaves")
           .select("id")
-          .eq("cnic", cnic)
+          .eq("student_id", student_id)
           .eq("status", "Approved");
+
+        console.log("Approved:", approved, approvedError); // DEBUG
 
         setApprovedLeaves(approved?.length || 0);
 
@@ -72,7 +80,7 @@ export default function StudentDashboard() {
         {/* WELCOME */}
         <section className="border-b pb-5">
           <h2 className="text-3xl font-semibold tracking-wide">
-            Welcome back, {user ? user.name : "Student"}
+            Welcome back, {user?.name || "Student"}
           </h2>
           <p className="text-black/60 mt-1">
             Your learning progress and activity overview
@@ -131,52 +139,63 @@ export default function StudentDashboard() {
             My Courses
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {enrolledCourses.length === 0 ? (
+            <p className="text-center text-black/50 mt-10">
+              No courses enrolled yet 📚
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
 
-            {enrolledCourses.map((c) => {
-              const courseStatus = c.progress >= 100 ? "Completed" : "Active";
+              {enrolledCourses.map((c) => {
+                const courseStatus = "Active";
 
-              return (
-                <div
-                  key={c.id}
-                  className="border border-black/10 rounded-2xl p-5 bg-white
-      hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                >
-                  {/* Title */}
-                  <div className="flex justify-between items-center mb-2">
-                    <h4 className="font-semibold text-lg">
-                      {c.course_name || c.courseName}
-                    </h4>
+                return (
+                  <div
+                    key={c.id}
+                    className="group relative border border-black/10 rounded-2xl p-5 
+            bg-gradient-to-br from-white to-gray-50
+            hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+                  >
 
-                    <span className="text-xs px-3 py-1 rounded-full border border-black/30 text-black/60">
+                    {/* STATUS BADGE */}
+                    <span className="absolute top-4 right-4 text-xs px-3 py-1 rounded-full 
+              bg-black text-white">
                       {courseStatus}
                     </span>
-                  </div>
 
-                  {/* Batch */}
-                  <p className="text-black/60 text-sm mb-4">
-                    {c.batch || "Batch not assigned"}
-                  </p>
-
-                  {/* Progress */}
-                  <div>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span>Progress</span>
-                      <span>{c.progress || 0}%</span>
+                    {/* ICON */}
+                    <div className="mb-4 w-12 h-12 flex items-center justify-center 
+              rounded-xl bg-black text-white">
+                      <BookOpen className="w-5 h-5" />
                     </div>
 
-                    <div className="h-2 bg-black/10 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-black/70 transition-all duration-500"
-                        style={{ width: `${c.progress || 0}%` }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                    {/* TITLE */}
+                    <h4 className="font-semibold text-lg mb-1">
+                      {c.courseName}
+                    </h4>
 
-          </div>
+                    {/* SUB INFO */}
+                    <p className="text-sm text-black/60 mb-3">
+                      CNIC: {c.cnic}
+                    </p>
+
+                    {/* EMAIL */}
+                    <p className="text-xs text-black/50">
+                      Email: {c.email}
+                    </p>
+
+                    {/* Roll no */}
+                    <p className="text-xs text-black/50">
+                      Roll: {c.roll_no}
+                    </p>
+
+
+                  </div>
+                );
+              })}
+
+            </div>
+          )}
         </section>
 
       </div >
