@@ -62,13 +62,19 @@ export default function AdminStudents() {
   return (
     <DashboardLayout navItems={navItems} title="Admin Panel">
       <div className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-3xl font-serif font-bold">Student Management</h2>
-            <p className="text-md font-light">Manage all registered students</p>
+            <h2 className="text-3xl font-serif font-bold text-black">
+              Student Management
+            </h2>
+            <p className="text-black/60 font-serif">
+              Manage all registered students
+            </p>
           </div>
 
-          <label className="px-5 py-2.5 rounded-xl border border-gray-200 bg-blue-500 text-lg font-bold font-serif hover:scale-105 flex items-center gap-2 text-white cursor-pointer transition duration-300">
+          <label className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-black/10
+    bg-black text-white font-serif font-medium cursor-pointer
+    hover:bg-gray-900 transition-all duration-300">
             <Upload className="h-4 w-4" />
             Upload Excel
             <input
@@ -80,43 +86,60 @@ export default function AdminStudents() {
           </label>
         </div>
 
+
         {/* Search */}
-        <div className="relative max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-          <input size={50}
-            placeholder="Search students by name"
+        <div className="relative max-w-md">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-black/40" />
+
+          <input
+            placeholder="Search students by name..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-9 pr-4  shadow-sm rounded-3xl font-serif border border-gray-100 py-3 outline-none"
+            className="w-full pl-9 pr-4 py-3 rounded-xl border border-black/10
+    bg-white text-black font-serif outline-none
+    focus:border-black transition"
           />
         </div>
 
+
         {/* Table */}
-        <div className="rounded-xl border border-gray-200 transition duration-300 hover:scale-102 bg-white shadow-sm overflow-hidden">
+        <div className="rounded-2xl border border-black/10 bg-white shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead className="bg-gray-100">
+            <table className="w-full text-sm font-serif">
+
+              {/* HEADER */}
+              <thead className="bg-black text-white">
                 <tr>
-                  <th className="p-3 border-b border-gray-100 font-serif tracking-wide text-xl text-left ">ID</th>
-                  <th className="p-3 border-b border-gray-100 font-serif tracking-wide text-xl text-left ">Name</th>
-                  <th className="p-3 border-b border-gray-100 font-serif tracking-wide text-xl text-left ">CNIC</th>
-                  <th className="p-3 border-b border-gray-100 font-serif tracking-wide text-xl text-left ">Roll No</th>
-                  <th className="p-3 border-b border-gray-100 font-serif tracking-wide text-xl text-left ">Email</th>
+                  <th className="p-4 text-left">#</th>
+                  <th className="p-4 text-left">Name</th>
+                  <th className="p-4 text-left">CNIC</th>
+                  <th className="p-4 text-left">Roll No</th>
+                  <th className="p-4 text-left">Email</th>
                 </tr>
               </thead>
+
+              {/* BODY */}
               <tbody>
                 {filteredStudents.map((student, index) => (
-                  <tr key={student.id} className="hover:bg-gray-50">
-                    <td className="p-3 border-b border-gray-100 text-lg font-serif">{index + 1}</td>
-                    <td className="p-3 border-b border-gray-100 text-lg font-serif">{student.name}</td>
-                    <td className="p-3 border-b border-gray-100 text-lg font-serif">{student.cnic}</td>
-                    <td className="p-3 border-b border-gray-100 text-lg font-serif">{student.roll_number}</td>
-                    <td className="p-3 border-b border-gray-100 text-lg font-serif">{student.email}</td>
+                  <tr
+                    key={student.id}
+                    className="border-b border-black/5 hover:bg-black/5 transition"
+                  >
+                    <td className="p-4">{index + 1}</td>
+                    <td className="p-4 font-medium">{student.name}</td>
+                    <td className="p-4 text-black/70">{student.cnic}</td>
+                    <td className="p-4 text-black/70">{student.roll_number}</td>
+                    <td className="p-4 text-black/70">{student.email}</td>
                   </tr>
                 ))}
+
+                {/* EMPTY STATE */}
                 {filteredStudents.length === 0 && (
                   <tr>
-                    <td colSpan={4} className="text-center font-serif text-2xl font-bold py-5 text-gray-500">
+                    <td
+                      colSpan={5}
+                      className="text-center py-8 text-black/50 font-serif"
+                    >
                       No students found.
                     </td>
                   </tr>
@@ -125,6 +148,7 @@ export default function AdminStudents() {
             </table>
           </div>
         </div>
+
       </div>
     </DashboardLayout>
   );

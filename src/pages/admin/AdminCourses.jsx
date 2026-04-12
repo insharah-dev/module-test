@@ -95,170 +95,215 @@ export default function AdminCourses() {
 
   return (
     <DashboardLayout navItems={navItems} title="Admin Panel">
-      <div className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+      <div className="space-y-8 font-serif text-black p-6 bg-white">
+
+        {/* HEADER */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-4">
+
           <div>
-            <h2 className="text-3xl font-serif font-bold">Course Management</h2>
-            <p className="text-md font-light ">Manage available courses</p>
+            <h2 className="text-3xl font-semibold tracking-wide">
+              Course Management
+            </h2>
+            <p className="text-black/60 text-sm mt-1">
+              Manage and organize all available courses
+            </p>
           </div>
+
           <button
-            className="px-5 py-2.5 rounded-xl bordeer border-gray-200 bg-blue-500 text-lg font-bold font-serif hover:scale-103 flex items-center gap-2 text-white transition duration-300"
             onClick={handleAddCourse}
+            className="flex items-center font-bold gap-2 px-5 py-2.5 rounded-xl border  hover:shadow-lg  hover:border-gray-200 bg-black text-white hover:bg-white hover:text-black transition duration-500"
           >
-            <Plus className="h-6 w-6" /> Add Course
+            <Plus className="h-5 w-5" />
+            Add Course
           </button>
+
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3">
+        {/* COURSE GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {courses.map((allCourse, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-102 transition duration-300 p-5 border border-gray-100"
+              className="bg-white border border-black/10 rounded-2xl p-6 shadow-sm
+      hover:shadow-xl hover:-translate-y-1 transition-all duration-300 font-serif"
             >
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-md lg:text-lg font-extrabold font-serif text-[#003b46] ">
+              {/* Title + Status */}
+              <div className="flex justify-between items-start mb-4">
+                <h2 className="text-lg font-semibold text-black truncate">
                   {allCourse.name}
                 </h2>
+
                 <span
-                  className={`px-3 py-1 font-serif text-xs font-bold tracking-wide rounded-full ${allCourse.status
-                    ? "bg-green-100 text-green-700"
-                    : "bg-red-100 text-red-700"
+                  className={`px-3 py-1 text-xs rounded-full border font-medium tracking-wide
+          ${allCourse.status
+                      ? "border-black text-black"
+                      : "border-black/30 text-black/40"
                     }`}
                 >
-                  {allCourse.status ? "Open" : "Closed"}
+                  {allCourse.status ? "OPEN" : "CLOSED"}
                 </span>
               </div>
 
-              <p className="text-gray-600 text-sm font-serif mb-3 line-clamp-3">{allCourse.description}</p>
+              {/* Description */}
+              <p className="text-black/60 text-sm mb-4 line-clamp-3">
+                {allCourse.description}
+              </p>
 
-              <div className="text-sm flex gap-2.5 items-center justify-between text-gray-700 space-y-1">
-                <p className="font-semibold text-xs flex items-center font-serif gap-1 ">
+              {/* Info */}
+              <div className="flex justify-between text-sm text-black/60 mb-5">
+                <p className="flex items-center gap-1">
                   <MdAccessTime /> {allCourse.duration}
                 </p>
-                <p className="font-semibold text-xs flex items-center font-serif gap-1">
-                  <PiStudent />{allCourse.instructor}
+
+                <p className="flex items-center gap-1">
+                  <PiStudent /> {allCourse.instructor}
                 </p>
               </div>
 
+              {/* Button */}
               <button
-                onClick={() => handleEditCourse(allCourse.id, allCourse.name, allCourse.status)}
-                className="px-3 py-1.5 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 border rounded-lg mt-3 text-sm font-serif font-semibold flex items-center gap-1"
+                onClick={() =>
+                  handleEditCourse(allCourse.id, allCourse.name, allCourse.status)
+                }
+                className="w-full py-2.5 rounded-xl border border-black/10
+        font-bold bg-black text-white
+        transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <FaRegEdit className="mb-0.5" />Edit
+                <FaRegEdit />
+                Edit Course
               </button>
             </div>
           ))}
         </div>
+
       </div>
 
-      {/* Add Modal */}
+      {/* ================= ADD MODAL ================= */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl px-3 pt-5 pb-3 w-full max-w-sm">
-            <h3 className="text-xl font-serif font-semibold mb-4"> Add Course</h3>
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 font-serif">
 
-            <div className="space-y-2.5">
+          <div className="bg-white w-[95%] max-w-xl rounded-3xl p-6 shadow-2xl border border-black/10">
+
+            <h3 className="text-2xl font-semibold mb-5">
+              Add New Course
+            </h3>
+
+            <div className="space-y-3">
+
               <input
-                type="text"
-                className="px-2 py-2 border border-gray-200 rounded-md text-sm font-serif font-medium outline-0 w-full"
                 value={courseName}
                 onChange={(e) => setCourseName(e.target.value)}
-                placeholder="Course name"
+                placeholder="Course Name"
+                className="w-full border border-black/20 p-3 rounded-xl focus:outline-none focus:border-black"
               />
 
               <input
-                type="text"
-                className="px-2 py-2 border border-gray-200 rounded-md text-sm font-serif font-medium outline-0 w-full"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Description"
+                className="w-full border border-black/20 p-3 rounded-xl focus:outline-none focus:border-black"
               />
 
               <input
-                type="text"
-                className="px-2 py-2 border border-gray-200 rounded-md text-sm font-serif font-medium outline-0 w-full"
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
-                placeholder="Duration (e.g. 4 Months)"
+                placeholder="Duration"
+                className="w-full border border-black/20 p-3 rounded-xl focus:outline-none focus:border-black"
               />
+
               <input
-                type="text"
-                className="px-2 py-2 border border-gray-200 rounded-md text-sm font-serif font-medium outline-0 w-full"
                 value={instructor}
                 onChange={(e) => setInstructor(e.target.value)}
-                placeholder="Instructor (e.g: sir Ghous)"
+                placeholder="Instructor"
+                className="w-full border border-black/20 p-3 rounded-xl focus:outline-none focus:border-black"
               />
 
               <select
-                className="px-2 py-2 border border-gray-200 rounded-lg text-sm font-serif font-medium outline-0 w-full"
-                value={courseStatus.toString()}
+                value={courseStatus}
                 onChange={(e) => setCourseStatus(e.target.value === "true")}
+                className="w-full border border-black/20 p-3 rounded-xl focus:outline-none focus:border-black"
               >
                 <option value="true">Open</option>
                 <option value="false">Closed</option>
               </select>
+
             </div>
 
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex gap-3 mt-6">
+
               <button
                 onClick={handleSaveCourse}
-                className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-semibold"
+                className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition"
               >
                 Save
               </button>
+
               <button
                 onClick={() => setModalOpen(false)}
-                className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-semibold"
+                className="w-full border border-black/20 py-3 rounded-xl hover:bg-black/5 transition"
               >
                 Cancel
               </button>
+
             </div>
+
           </div>
         </div>
       )}
 
-      {/* Edit Modal */}
+      {/* ================= EDIT MODAL ================= */}
       {editModal && (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl px-3 pt-5 pb-3 w-full max-w-sm">
-            <h3 className="text-xl font-serif font-semibold mb-4">Edit Course</h3>
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 font-serif">
 
-            <div className="space-y-2.5">
+          <div className="bg-white w-[95%] max-w-xl rounded-3xl p-6 shadow-2xl border border-black/10">
+
+            <h3 className="text-2xl font-semibold mb-5">
+              Edit Course
+            </h3>
+
+            <div className="space-y-3">
+
               <input
-                type="text"
-                className="px-2 py-2 border border-gray-200 rounded-md text-sm font-serif font-medium outline-0 w-full"
                 value={courseName}
                 onChange={(e) => setCourseName(e.target.value)}
-                placeholder="Course name"
+                className="w-full border border-black/20 p-3 rounded-xl focus:outline-none focus:border-black"
               />
 
               <select
-                className="px-2 py-2 border border-gray-200 rounded-lg text-sm font-serif font-medium outline-0 w-full"
-                value={courseStatus.toString()}
+                value={courseStatus}
                 onChange={(e) => setCourseStatus(e.target.value === "true")}
+                className="w-full border border-black/20 p-3 rounded-xl"
               >
                 <option value="true">Open</option>
                 <option value="false">Closed</option>
               </select>
+
             </div>
 
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex gap-3 mt-6">
+
               <button
                 onClick={handleEdit}
-                className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-semibold"
+                className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition"
               >
-                Save
+                Update
               </button>
+
               <button
                 onClick={() => setEditModal(false)}
-                className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-semibold"
+                className="w-full border border-black/20 py-3 rounded-xl hover:bg-black/5 transition"
               >
                 Cancel
               </button>
+
             </div>
+
           </div>
         </div>
       )}
+
     </DashboardLayout>
   );
+
 }

@@ -12,9 +12,8 @@ const Signup = () => {
     const [loading, setLoading] = useState(false);
     const [studentsDB, setStudentsDB] = useState([]);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    // Fetch students added by admin
     useEffect(() => {
         const fetchStudents = async () => {
             const { data, error } = await client.from("students").select("*");
@@ -23,14 +22,11 @@ const Signup = () => {
         fetchStudents();
     }, []);
 
-
-
     const validate = () => {
         if (!cnic.trim() || !rollNumber.trim() || !password) {
-            toast.error("All feild required!");
+            toast.error("All fields required!");
             return false;
         }
-
         if (password.length < 6) {
             toast.error("Password must be at least 6 characters");
             return false;
@@ -44,7 +40,6 @@ const Signup = () => {
 
         setLoading(true);
 
-        // Check if student exists in admin list
         const studentExists = studentsDB.find(
             (s) => s.cnic === cnic && s.roll_number === rollNumber
         );
@@ -55,7 +50,6 @@ const Signup = () => {
             return;
         }
 
-        // Check if already registered
         const { data: existing } = await client
             .from("student_accounts")
             .select("*")
@@ -67,7 +61,6 @@ const Signup = () => {
             return;
         }
 
-        // Insert new account
         const { error } = await client.from("student_accounts").insert([
             {
                 cnic,
@@ -77,12 +70,13 @@ const Signup = () => {
         ]);
 
         if (!error) {
-            toast.success("Signup successful ");
+            toast.success("Signup successful");
 
             setCnic("");
             setRollNumber("");
             setPassword("");
-            navigate("/login")
+
+            navigate("/student/dashboard");
         } else {
             toast.error("Error creating account");
             console.log(error);
@@ -92,75 +86,89 @@ const Signup = () => {
     };
 
     return (
-        <form  onSubmit={handleSubmit}>
-            <h2 className="text-2xl mt-5 font-serif font-semibold text-center">
-                Create Account
-            </h2>
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100">
 
-            {/* CNIC */}
-            <div>
-                <label className="text-sm font-serif font-bold">CNIC</label>
-                <input
-                    type="text"
-                    placeholder="1234512345671"
-                    value={cnic}
-                    onChange={(e) => setCnic(e.target.value)}
-                    maxLength={15}
-                    className="w-full h-11 px-3 rounded-lg border border-gray-300 outline-0 my-2"
-                />
-            </div>
-
-            {/* Roll Number */}
-            <div>
-                <label className="text-sm font-serif font-bold">Roll Number</label>
-                <input
-                    type="text"
-                    placeholder="Enter your Roll Number"
-                    value={rollNumber}
-                    onChange={(e) => setRollNumber(e.target.value)}
-                    className="w-full h-11 px-3 rounded-lg border border-gray-300 outline-0 my-2"
-                />
-            </div>
-
-            {/* Password */}
-            <div>
-                <label className="text-sm font-serif font-bold">Password</label>
-                <div className="relative">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Create a password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full h-11 px-3 rounded-lg border border-gray-300 outline-0 my-2"
-                    />
-                    <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
-                    >
-                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Button */}
-            <button
-                type="submit"
-                disabled={loading}
-                className="w-full h-11 font-serif bg-blue-600 mt-3 text-white rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-blue-700 transition"
+            <form
+                onSubmit={handleSubmit}
+                className="w-full max-w-lg p-10 rounded-3xl bg-white/80 backdrop-blur-lg border border-gray-200 shadow-xl space-y-6"
             >
-                {loading ? (
-                    <>
-                        <Loader2 className="animate-spin" size={18} />
-                        Creating account...
-                    </>
-                ) : (
-                    "Sign Up"
-                )}
-            </button>
-        </form>
+                {/* Heading */}
+                <div className="text-center">
+                    <h2 className="text-2xl font-semibold">Create Account</h2>
+                    <p className="text-sm text-gray-500 mt-1">
+                        Sign up to get started
+                    </p>
+                </div>
+
+                {/* CNIC */}
+                <div>
+                    <label className="text-sm font-medium text-gray-600">
+                        CNIC
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="1234512345671"
+                        value={cnic}
+                        onChange={(e) => setCnic(e.target.value)}
+                        className="w-full mt-2 h-11 px-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black transition"
+                    />
+                </div>
+
+                {/* Roll Number */}
+                <div>
+                    <label className="text-sm font-medium text-gray-600">
+                        Roll Number
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Enter your Roll Number"
+                        value={rollNumber}
+                        onChange={(e) => setRollNumber(e.target.value)}
+                        className="w-full mt-2 h-11 px-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black transition"
+                    />
+                </div>
+
+                {/* Password */}
+                <div>
+                    <label className="text-sm font-medium text-gray-600">
+                        Password
+                    </label>
+                    <div className="relative mt-2">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Create a password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="w-full h-11 px-4 pr-10 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black transition"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
+                        >
+                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Button */}
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full h-11 rounded-xl bg-black text-white font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition"
+                >
+                    {loading ? (
+                        <>
+                            <Loader2 className="animate-spin" size={18} />
+                            Creating account...
+                        </>
+                    ) : (
+                        "Sign Up"
+                    )}
+                </button>
+            </form>
+        </div>
     );
 };
 
 export default Signup;
-

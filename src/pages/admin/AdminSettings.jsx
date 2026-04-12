@@ -91,93 +91,108 @@ export default function AdminSettings() {
   return (
     <DashboardLayout navItems={navItems} title="Admin Panel">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold font-serif">Admin Control Center</h1>
-        <p className="text-gray-500 text-md font-light mt-1">
-          Secure your account by updating password and manage system admins easily.
+        <h1 className="text-3xl font-serif font-bold text-black">
+          Admin Control Center
+        </h1>
+        <p className="text-black/60 font-serif mt-1">
+          Manage password and admin accounts securely
         </p>
       </div>
-      <div className="grid grid-cols-1 xl:grid-cols-2  gap-5  ">
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+
         {/* Change Password */}
-        <div className="bg-white rounded-3xl shadow-md hover:shadow-xl hover:scale-102 transition duration-300 p-5 border border-gray-100">
-          <h2 className="text-2xl font-bold mb-4 font-serif">Change Password</h2>
+        <div className="bg-white border border-black/10 rounded-2xl p-6 shadow-sm
+hover:shadow-xl hover:-translate-y-1 transition-all duration-300 font-serif">
+
+          <h2 className="text-xl font-semibold mb-5 text-black">
+            Change Password
+          </h2>
+
           <div className="space-y-4">
-            <div className="space-y-2">
 
-              <input
-                type="password"
-                placeholder="Current Password"
-                value={oldPassword}
-                onChange={e => setOldPassword(e.target.value)}
-                className="w-full border-gray-300 outline-0 p-3 border rounded-lg font-serif text-sm"
-              />
-            </div>
-            <div className="space-y-2">
+            <input
+              type="password"
+              placeholder="Current Password"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+              className="w-full p-3 rounded-xl border border-black/10
+      focus:border-black outline-none transition"
+            />
 
-              <input
-                type="password"
-                placeholder="New Password"
-                value={newPassword}
-                onChange={e => setNewPassword(e.target.value)}
-                className="w-full border-gray-300 outline-0 p-3 border rounded-lg font-serif text-sm"
-              />
-            </div>
-            <div className="space-y-2">
+            <input
+              type="password"
+              placeholder="New Password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="w-full p-3 rounded-xl border border-black/10
+      focus:border-black outline-none transition"
+            />
 
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                value={confrmPass}
-                onChange={e => setConfrmPass(e.target.value)}
-                className="w-full border-gray-300 outline-0 p-3 border rounded-lg font-serif text-sm"
-              />
-            </div>
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              value={confrmPass}
+              onChange={(e) => setConfrmPass(e.target.value)}
+              className="w-full p-3 rounded-xl border border-black/10
+      focus:border-black outline-none transition"
+            />
+
             <button
               onClick={handleChangePassword}
-              className="w-full bg-green-600 text-white p-3 rounded-lg font-bold text-xl font-serif hover:bg-green-700"
+              className="w-full bg-black text-white py-3 rounded-xl
+      hover:bg-gray-900 transition font-medium"
             >
               Update Password
             </button>
+
           </div>
         </div>
 
+
         {/* Add Admin */}
-        <div className="bg-white rounded-3xl shadow-md hover:shadow-xl hover:scale-102 transition duration-300 p-5 border border-gray-100">
-          <h2 className="text-2xl font-bold mb-4 font-serif">Add New Admin</h2>
+        <div className="bg-white border border-black/10 rounded-2xl p-6 shadow-sm
+hover:shadow-xl hover:-translate-y-1 transition-all duration-300 font-serif">
+
+          <h2 className="text-xl font-semibold mb-5 text-black">
+            Add New Admin
+          </h2>
+
           <div className="space-y-4">
-            <div className="space-y-2">
 
-              <input
-                placeholder="Admin name"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                className="w-full border-gray-300 outline-0 p-3 border rounded-lg font-serif text-sm"
-              />
-            </div>
-            <div className="space-y-2">
+            <input
+              placeholder="Admin Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-3 rounded-xl border border-black/10
+      focus:border-black outline-none transition"
+            />
 
-              <input
-                placeholder="admin_username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                className="w-full border-gray-300 outline-0 p-3 border rounded-lg font-serif text-sm"
-              />
-            </div>
-            <div className="space-y-2">
+            <input
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full p-3 rounded-xl border border-black/10
+      focus:border-black outline-none transition"
+            />
 
-              <input
-                type="password"
-                placeholder="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                className="w-full border-gray-300 outline-0 p-3 border rounded-lg font-serif text-sm"
-              />
-            </div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 rounded-xl border border-black/10
+      focus:border-black outline-none transition"
+            />
+
             <button
               onClick={handleAddAdmin}
-              className="w-full bg-green-600 text-white p-3 rounded-lg font-bold text-xl font-serif hover:bg-green-700"
+              className="w-full bg-black text-white py-3 rounded-xl
+      hover:bg-gray-900 transition font-medium"
             >
               Add Admin
             </button>
+
           </div>
         </div>
       </div>
