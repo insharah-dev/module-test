@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { BookOpen, Check, Eye, FileText, LayoutDashboard, Settings, Users, X } from "lucide-react";
-import { client } from "../../config/supabase";
+import { client } from "../../config/Supabase";
 import toast, { Toaster } from "react-hot-toast";
 
 const navItems = [
@@ -73,7 +73,7 @@ export default function AdminLeaves() {
               {/* HEADER */}
               <thead>
                 <tr className="bg-gray-900 text-white">
-                  <th className="p-4 text-left font-serif text-xl font-semibold">Student ID</th>
+                  <th className="p-4 text-left font-serif text-xl font-semibold">Name</th>
                   <th className="p-4 text-left font-serif text-xl font-semibold">Reason</th>
                   <th className="p-4 text-left font-serif text-xl font-semibold">From</th>
                   <th className="p-4 text-left font-serif text-xl font-semibold">To</th>
@@ -85,6 +85,8 @@ export default function AdminLeaves() {
               {/* BODY */}
               <tbody>
                 {leaves.map((l, index) => (
+                  console.log(l, "all leaves"),
+
                   <tr
                     key={l.id}
                     className={`border-b border-gray-200 transition duration-200 
@@ -92,9 +94,9 @@ export default function AdminLeaves() {
               ${index % 2 === 0 ? "bg-white" : "bg-gray-50/40"}
             `}
                   >
-                    <td className="p-4 font-medium text-lg font-serif text-gray-700">{l.student_id}</td>
+                    <td className="p-4 text-gray-600 text-lg font-serif">{l.fullName}</td>
 
-                    <td className="p-4 text-gray-600 text-lg font-serif max-w-[200px] truncate">
+                    <td className="p-4 text-gray-600 text-lg font-serif truncate">
                       {l.reason}
                     </td>
 
@@ -104,10 +106,10 @@ export default function AdminLeaves() {
                     {/* STATUS */}
                     <td className="p-4">
                       <span
-                        className={`px-3 py-1 text-xs font-semibold rounded-full shadow-sm
-                  ${l.status === "Approved" && "bg-green-100 text-green-700"}
-                  ${l.status === "Pending" && "bg-yellow-100 text-yellow-700"}
-                  ${l.status === "Rejected" && "bg-red-100 text-red-700"}
+                        className={`px-3 py-1.5 text-xs font-semibold rounded-full shadow-sm
+                  ${l.status === "Approved" && "border border-green-700 text-green-700"}
+                  ${l.status === "Pending" && "border border-yellow-700 text-yellow-700"}
+                  ${l.status === "Rejected" && "border border-red-700 text-red-700"}
                 `}
                       >
                         {l.status}

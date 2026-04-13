@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { BookOpen, ClipboardList, FileText } from "lucide-react";
-import { client } from "../../config/supabase";
+import { client } from "../../config/Supabase";
 
 const navItems = [
   { label: "My Courses", to: "/student/dashboard", icon: <BookOpen /> },
@@ -75,15 +75,15 @@ export default function StudentDashboard() {
   return (
     <DashboardLayout navItems={navItems} title="Student Dashboard">
 
-      <div className="flex flex-col gap-10 p-6 font-serif bg-white text-black">
+      <div className="flex flex-col gap-5 font-serif bg-white text-black">
 
         {/* WELCOME */}
-        <section className="border-b pb-5">
+        <section>
           <h2 className="text-3xl font-semibold tracking-wide">
-            Welcome back, {user?.name || "Student"}
+            My Learning Dashboard
           </h2>
           <p className="text-black/60 mt-1">
-            Your learning progress and activity overview
+            Overview of your courses, leaves and activity
           </p>
         </section>
 
@@ -109,25 +109,19 @@ export default function StudentDashboard() {
           ].map((s, i) => (
             <div
               key={i}
-              className="group border border-black/10 rounded-2xl py-8 px-5 flex items-center gap-4
-             bg-black hover:scale-[1.03] hover:shadow-xl transition-all duration-300">
+              className="rounded-2xl border border-black/10 bg-white p-5 
+      shadow-sm hover:shadow-lg transition hover:scale-103 duration-300"
+            >
+              <div className="flex items-center justify-between mb-3">
 
-              <div className="p-3 border rounded-xl 
-              border-white/20 transition">
-                <span className="text-white transition">
+                <div className="h-10 w-10 rounded-lg bg-black text-white flex items-center justify-center">
                   {s.icon}
-                </span>
+                </div>
+
               </div>
 
-              <div>
-                <p className="text-2xl font-bold transition text-white">
-                  {s.value}
-                </p>
-
-                <p className="text-sm transition text-white/70">
-                  {s.label}
-                </p>
-              </div>
+              <p className="text-2xl font-bold">{s.value}</p>
+              <p className="text-sm text-black/60">{s.label}</p>
             </div>
           ))}
 
@@ -135,69 +129,69 @@ export default function StudentDashboard() {
 
         {/* COURSES */}
         <section>
-          <h3 className="text-xl font-semibold mb-5 border-b pb-2">
+          <h3 className="text-2xl font-semibold mb-5">
             My Courses
           </h3>
 
           {enrolledCourses.length === 0 ? (
-            <p className="text-center text-black/50 mt-10">
+            <p className="text-center text-2xl text-black/50 mt-10">
               No courses enrolled yet 📚
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
 
-              {enrolledCourses.map((c) => {
-                const courseStatus = "Active";
+              {enrolledCourses.map((c) => (
+                <div
+                  key={c.id}
+                  className="rounded-2xl border border-black/10 bg-white p-5 
+          shadow-sm hover:shadow-lg transition duration-300 hover:scale-103"
+                >
 
-                return (
-                  <div
-                    key={c.id}
-                    className="group relative border border-black/10 rounded-2xl p-5 
-            bg-gradient-to-br from-white to-gray-50
-            hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-                  >
-
-                    {/* STATUS BADGE */}
-                    <span className="absolute top-4 right-4 text-xs px-3 py-1 rounded-full 
-              bg-black text-white">
-                      {courseStatus}
-                    </span>
-
-                    {/* ICON */}
-                    <div className="mb-4 w-12 h-12 flex items-center justify-center 
-              rounded-xl bg-black text-white">
-                      <BookOpen className="w-5 h-5" />
+                  {/* Header */}
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 className="font-semibold text-2xl text-black">
+                        {c.courseName}
+                      </h4>
+                      <p className="text-xs text-black/40 mt-1">
+                        Enrolled Course
+                      </p>
                     </div>
 
-                    {/* TITLE */}
-                    <h4 className="font-semibold text-lg mb-1">
-                      {c.courseName}
-                    </h4>
+                    <span className="text-xs px-3 py-1 rounded-full bg-black text-white">
+                      Active
+                    </span>
+                  </div>
 
-                    {/* SUB INFO */}
-                    <p className="text-sm text-black/60 mb-3">
-                      CNIC: {c.cnic}
-                    </p>
 
-                    {/* EMAIL */}
-                    <p className="text-xs text-black/50">
-                      Email: {c.email}
-                    </p>
 
-                    {/* Roll no */}
-                    <p className="text-xs text-black/50">
-                      Roll: {c.roll_no}
-                    </p>
+                  {/* INFo */}
+                  <div className="grid grid-cols-1 gap-2 text-sm text-black/60">
 
+                    <div className="flex justify-between border-b border-black/5 pb-2">
+                      <span className="text-black/40">CNIC</span>
+                      <span>{c.cnic}</span>
+                    </div>
+
+                    <div className="flex justify-between border-b border-black/5 pb-2">
+                      <span className="text-black/40">Email</span>
+                      <span>{c.email}</span>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <span className="text-black/40">Roll No</span>
+                      <span className="font-medium text-black">{c.roll_no}</span>
+                    </div>
 
                   </div>
-                );
-              })}
+
+
+                </div>
+              ))}
 
             </div>
           )}
         </section>
-
       </div >
 
     </DashboardLayout >

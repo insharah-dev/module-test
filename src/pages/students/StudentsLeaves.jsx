@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { Upload, BookOpen, ClipboardList, FileText } from "lucide-react";
-import { client } from "../../config/supabase";
+import { client } from "../../config/Supabase";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function StudentLeaves() {
@@ -12,6 +12,7 @@ export default function StudentLeaves() {
     ];
 
     const [form, setForm] = useState({
+        fullName: "",
         reason: "",
         from: "",
         to: "",
@@ -21,6 +22,8 @@ export default function StudentLeaves() {
 
     // 🔥 get current user
     const student = JSON.parse(localStorage.getItem("student"));
+    console.log(student);
+
 
     // ✅ handle input
     const handleChange = (e) => {
@@ -52,7 +55,7 @@ export default function StudentLeaves() {
 
     // ✅ submit
     const handleSubmit = async () => {
-        if (!form.reason || !form.from || !form.to) {
+        if (!form.fullName || !form.reason || !form.from || !form.to) {
             return toast.error("All fields required");
         }
 
@@ -64,6 +67,7 @@ export default function StudentLeaves() {
             const { error } = await client.from("leaves").insert([
                 {
                     student_id: student?.id,
+                    fullName: form.fullName,
                     reason: form.reason,
                     from: form.from,
                     to: form.to,
@@ -80,6 +84,7 @@ export default function StudentLeaves() {
 
             // reset form
             setForm({
+                fullName: "",
                 reason: "",
                 from: "",
                 to: "",
@@ -109,6 +114,18 @@ export default function StudentLeaves() {
 
                         <div className="grid gap-5 sm:grid-cols-2">
 
+                            {/* fullname */}
+                            <div className="sm:col-span-2">
+                                <label className="text-sm text-black/70 mb-1 block">Full Name</label>
+                                <input
+                                    name="fullName"
+                                    value={form.fullName}
+                                    onChange={handleChange}
+                                    placeholder="Your Name"
+                                    className="w-full border border-black/20 rounded-xl p-3 bg-white
+          focus:outline-none focus:border-black transition"
+                                />
+                            </div>
                             {/* Reason */}
                             <div className="sm:col-span-2">
                                 <label className="text-sm text-black/70 mb-1 block">Reason</label>

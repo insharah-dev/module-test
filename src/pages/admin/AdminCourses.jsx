@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { BookOpen, FileText, LayoutDashboard, Plus, Settings, Users } from "lucide-react";
-import { client } from "../../config/supabase";
+import { client } from "../../config/Supabase";
 import { MdAccessTime } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import { FaRegEdit } from "react-icons/fa";
@@ -96,7 +96,7 @@ export default function AdminCourses() {
   return (
     <DashboardLayout navItems={navItems} title="Admin Panel">
 
-      <div className="space-y-8 font-serif text-black p-6 bg-white">
+      <div className="space-y-8 font-serif text-black bg-white">
 
         {/* HEADER */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b pb-4">
