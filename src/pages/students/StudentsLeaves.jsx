@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { Upload, BookOpen, ClipboardList, FileText } from "lucide-react";
-import { client } from "../../config/Supabase";
+import { client } from "../../config/supabase";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function StudentLeaves() {

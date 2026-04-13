@@ -1,7 +1,7 @@
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { BookOpen, FileText, Settings, Users, LayoutDashboard } from "lucide-react";
 import { useEffect, useState } from "react";
-import { client } from "../../config/Supabase";
+import { client } from "../../config/supabase";
 
 const navItems = [
   { label: "Dashboard", to: "/admin/dashboard", icon: <LayoutDashboard className="h-4 w-4" /> },

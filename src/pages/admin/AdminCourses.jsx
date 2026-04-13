@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { BookOpen, FileText, LayoutDashboard, Plus, Settings, Users } from "lucide-react";
-import { client } from "../../config/Supabase";
+import { client } from "../../config/supabase";
 import { MdAccessTime } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import { FaRegEdit } from "react-icons/fa";

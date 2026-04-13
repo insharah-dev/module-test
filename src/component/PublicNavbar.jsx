@@ -17,17 +17,16 @@ export function PublicNavbar() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-black text-white">
-            <GraduationCap className="h-5 w-5" />
+          <div className="flex items-center gap-2">
+            <div className="h-10 w-10 bg-black text-white rounded-xl flex items-center justify-center">
+              <GraduationCap className="h-5 w-5" />
+            </div>
+            <h1 className="font-bold text-lg">SMIT Connect Portal</h1>
           </div>
-          <span className="text-lg font-semibold tracking-wide">
-            SMIT Connect
-          </span>
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -37,21 +36,18 @@ export function PublicNavbar() {
               {link.label}
             </Link>
           ))}
-
-          {/* Buttons */}
-          <Link to="/auth">
-            <button className="px-4 py-2 font-bold rounded-xl border border-black/20 text-sm hover:bg-gray-50 transition">
-              Student Login
-            </button>
-          </Link>
-
-          <Link to="/admin/AdminLogin">
-            <button className="px-4 py-2.5 rounded-xl bg-black font-semibold text-white text-sm hover:bg-gray-800 transition">
-              Admin Login
-            </button>
-          </Link>
-
         </div>
+        {/* Buttons */}
+        <div className="flex gap-3">
+          <Link to="/auth" className="px-4 py-2 text-sm border border-black rounded-xl hover:bg-black hover:text-white transition">
+            Student Login
+          </Link>
+
+          <Link to="/admin/AdminLogin" className="px-4 py-2 text-sm bg-black text-white rounded-xl hover:opacity-80 transition">
+            Admin Login
+          </Link>
+        </div>
+
 
         {/* Mobile Button */}
         <button
