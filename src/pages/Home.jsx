@@ -9,9 +9,10 @@ export default function Home() {
             id: 1,
             author: "SMIT Official",
             time: "2 hours ago",
-            content: "🎉 New batch of Web Development starting from April 15! Register now to secure your seat.",
+            content: "🚀 We’re Hiring in Karachi! Are you passionate, creative, and ready to make an impact? Join our dynamic team at Saylani I.T and be part of a mission that empowers youth through technology. 📌 Open Positions: • Campus Manager(Male / Female) • Assistant Manager(Male / Female) • Network Administrator(Female) ✨ If you’re driven, dedicated, and eager to grow in a professional environment, we’d love to hear from you! 📧 Send your resume to: smit.edu@saylaniwelfare.com📍 Location: Karachi",
             likes: 42,
             comments: 8,
+            img: "https://scontent.fkhi16-1.fna.fbcdn.net/v/t39.30808-6/668591108_122284397318153270_6801304540625203917_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=100&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHZ9nLaAYVomA3_uEJG0CQIW3Qzo8O17p5bdDOjw7XunpIS6xiEyL2deTambycrjSrvNcHu8L1Sr1yvqGtwnaAo&_nc_ohc=UFdnDQwbHIQQ7kNvwHpTca1&_nc_oc=AdpI-dxV1WrCQS4rD_McOzN6clBNMyJauHXEWO0klnKsHTsipBMJaExxxuAbA13B-tI&_nc_zt=23&_nc_ht=scontent.fkhi16-1.fna&_nc_gid=gTNtp6JisAVIudLCEJWjvg&_nc_ss=7a3a8&oh=00_Af1i8PfoeOHYugoRthcIUFjTcf1FHIaSQQcZG1nGGFw1-w&oe=69E3115F",
         },
         {
             id: 2,
@@ -20,6 +21,7 @@ export default function Home() {
             content: "Congratulations to our students who completed the AI & Machine Learning course! 🎓",
             likes: 128,
             comments: 23,
+            img: "",
         },
         {
             id: 3,
@@ -28,6 +30,7 @@ export default function Home() {
             content: "Workshop on Mobile App Development this Saturday. Don't miss out! 📱",
             likes: 67,
             comments: 12,
+            img: "",
         },
     ];
 
@@ -159,61 +162,71 @@ export default function Home() {
                 </div>
 
                 {/* POSTS GRID */}
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
-                    {posts.map((post, i) => (
+                    {posts.map((post) => (
                         <div
                             key={post.id}
-                            className="border border-black/10 rounded-2xl p-6 bg-white shadow-sm hover:shadow-xl transition duration-300 hover:-translate-y-1"
+                            className="border border-black/10 rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition"
                         >
 
                             {/* HEADER */}
-                            <div className="flex items-center gap-3 mb-4">
+                            <div className="flex items-center gap-2 mb-2">
 
-                                <div className="h-11 w-11 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
+                                <div className="h-8 w-8 rounded-full bg-black text-white flex items-center justify-center text-xs font-bold">
                                     SM
                                 </div>
 
                                 <div>
-                                    <p className="font-semibold text-sm">
-                                        {post.author}
-                                    </p>
-                                    <p className="text-xs text-black/40">
-                                        {post.time}
-                                    </p>
+                                    <p className="text-xs font-semibold">{post.author}</p>
+                                    <p className="text-[10px] text-black/50">{post.time}</p>
                                 </div>
 
                             </div>
 
                             {/* CONTENT */}
-                            <p className="text-sm text-black/70 leading-relaxed mb-5">
-                                {post.content}
+                            <p className="text-xs text-black/70 mb-2 leading-snug">
+                                {post.content.length > 100
+                                    ? post.content.slice(0, 100) + "..."
+                                    : post.content}
                             </p>
 
+                            {/* IMAGE (small) */}
+                            {post.img && (
+                                <img
+                                    src={post.img}
+                                    alt="post"
+                                    className="w-full h-32 object-cover rounded-lg mb-2"
+                                />
+                            )}
+
                             {/* ACTIONS */}
-                            <div className="flex items-center justify-between text-xs text-black/50">
+                            <div className="flex justify-between text-[10px] text-black/50 border-t border-black/10 pt-2">
 
-                                <div className="flex items-center gap-4">
+                                <div className="flex gap-3">
 
-                                    <span className="flex items-center gap-1 hover:text-black transition cursor-pointer">
-                                        <Heart className="h-4 w-4" /> {post.likes}
+                                    <span className="flex items-center gap-1 cursor-pointer hover:text-black">
+                                        <Heart className="h-3 w-3" /> {post.likes}
                                     </span>
 
-                                    <span className="flex items-center gap-1 hover:text-black transition cursor-pointer">
-                                        <MessageCircle className="h-4 w-4" /> {post.comments}
+                                    <span className="flex items-center gap-1 cursor-pointer hover:text-black">
+                                        <MessageCircle className="h-3 w-3" /> {post.comments}
                                     </span>
 
                                 </div>
 
-                                <span className="flex items-center gap-1 hover:text-black transition cursor-pointer">
-                                    <Share2 className="h-4 w-4" /> Share
+                                <span className="flex items-center gap-1 cursor-pointer hover:text-black">
+                                    <Share2 className="h-3 w-3" />
                                 </span>
 
                             </div>
 
                         </div>
                     ))}
+
                 </div>
+
+
             </section>
 
             {/* FOOTER */}
