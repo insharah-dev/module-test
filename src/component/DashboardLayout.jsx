@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { GraduationCap, Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
-import { client } from "../config/Supabase";
+import { client } from "../config/supabase";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
