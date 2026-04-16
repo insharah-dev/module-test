@@ -41,9 +41,6 @@ export function DashboardLayout({ children, navItems, title }) {
     }, 800);
   };
 
-
-
-
   return (
     <>
       <Toaster position="top-right" />

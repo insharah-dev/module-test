@@ -69,22 +69,22 @@ const AdminLogin = () => {
             <PublicNavbar />
 
             <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-gray-50 to-gray-100">
-                <Toaster position="top-center" />
+                <Toaster position="top-right" />
                 <form
                     onSubmit={handleLogin}
                     className="w-full max-w-lg p-10 rounded-3xl bg-white/80 backdrop-blur-lg border border-gray-200 shadow-xl space-y-6"
                 >
                     {/* Heading */}
                     <div className="text-center">
-                        <h2 className="text-2xl font-semibold">Admin Panel 🔐</h2>
-                        <p className="text-sm text-gray-500 mt-1">
+                        <h2 className="text-3xl font-serif font-bold">Admin Panel</h2>
+                        <p className="text-sm font-serif text-gray-500 mt-1">
                             Login to manage dashboard
                         </p>
                     </div>
 
                     {/* Username */}
                     <div>
-                        <label className="text-sm font-medium text-gray-600">
+                        <label className="text-sm font-serif font-medium text-gray-600">
                             Username
                         </label>
                         <input
@@ -92,13 +92,13 @@ const AdminLogin = () => {
                             placeholder="Enter username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="w-full mt-2 h-11 px-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black transition"
+                            className="w-full font-serif mt-2 h-11 px-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black transition"
                         />
                     </div>
 
                     {/* Password */}
                     <div>
-                        <label className="text-sm font-medium text-gray-600">
+                        <label className="text-sm font-serif font-medium text-gray-600">
                             Password
                         </label>
                         <div className="relative mt-2">
@@ -107,7 +107,7 @@ const AdminLogin = () => {
                                 placeholder="Enter password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full h-11 px-4 pr-10 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black transition"
+                                className="w-full font-serif h-11 px-4 pr-10 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black/80 focus:border-black transition"
                             />
                             <button
                                 type="button"
@@ -123,7 +123,7 @@ const AdminLogin = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full h-11 rounded-xl bg-black text-white font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition"
+                        className="w-full h-11 font-serif rounded-xl bg-black text-white font-medium flex items-center justify-center gap-2 hover:bg-gray-900 transition"
                     >
                         {loading ? (
                             <>

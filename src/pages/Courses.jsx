@@ -4,8 +4,15 @@ import { MdAccessTime } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import toast, { Toaster } from "react-hot-toast";
 import { PublicNavbar } from "../component/PublicNavbar";
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+
 
 export default function AdminCourses() {
+
+    const user = JSON.parse(localStorage.getItem("student"))
+    const navigate = useNavigate()
+
     const [modalOpen, setModalOpen] = useState(false);
     const [courses, setCourses] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState(null);
@@ -14,8 +21,6 @@ export default function AdminCourses() {
     const [rollNo, setRollNo] = useState("")
     const [email, setEmail] = useState("")
     const [cnic, setCnic] = useState("")
-
-
 
     // Fetch courses
     useEffect(() => {
@@ -28,9 +33,18 @@ export default function AdminCourses() {
     }, []);
 
     const handleApply = (course) => {
-        setSelectedCourse(course);
-        setModalOpen(true);
-    };
+
+        // 🔒 LOGIN CHECK
+        if (!user) {
+            toast.error("Please login first to apply")
+            navigate("/auth")
+            return
+        }
+
+        setSelectedCourse(course)
+        setModalOpen(true)
+    }
+
 
     const handleSubmit = async () => {
         if (!name || !email || !cnic || !rollNo) {
@@ -92,11 +106,11 @@ export default function AdminCourses() {
 
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
+                <div className="grid md:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 ">
                     {courses.map((allCourse, i) => (
                         <div
                             key={i}
-                            className="bg-white border border-black/10 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 font-serif"
+                            className="bg-white border border-black/10 rounded-2xl mx-auto p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 font-serif"
                         >
                             {/* Title + Status */}
                             <div className="flex justify-between items-center mb-4">
@@ -130,20 +144,25 @@ export default function AdminCourses() {
                             </div>
 
                             {/* Button */}
+
                             <button
                                 onClick={() => handleApply(allCourse)}
                                 disabled={!allCourse.status}
-                                className={`w-full py-2.5 rounded-xl font-medium transition border ${allCourse.status
-                                    ? "bg-black text-white hover:bg-gray-800 border-black"
-                                    : "bg-white text-black/40 border-black/20 cursor-not-allowed"
+                                className={`w-full py-2.5 rounded-xl font-medium transition border 
+                              ${allCourse.status
+                                        ? "bg-black text-white hover:bg-gray-800 border-black"
+                                        : "bg-white text-black/40 border-black/20 cursor-not-allowed"
                                     }`}
                             >
-                                {allCourse.status ? "Apply Now" : "Not Available"}
+                                {!allCourse.status
+                                    ? "Not Available"
+                                    : !user
+                                        ? "Login to Apply"
+                                        : "Apply Now"
+                                }
                             </button>
                         </div>
-
                     ))}
-
 
                 </div>
             </div>

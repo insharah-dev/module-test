@@ -13,20 +13,20 @@ export function PublicNavbar() {
   return (
     <nav className="sticky top-0 z-50 bg-white/80 shadow-sm backdrop-blur-md border-b border-black/10 font-serif">
 
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <div className="h-10 w-10 bg-black text-white rounded-xl flex items-center justify-center">
-              <GraduationCap className="h-5 w-5" />
-            </div>
-            <h1 className="font-bold text-lg">SMIT Connect Portal</h1>
+        <Link to="/" className="flex items-center gap-3 min-w-fit">
+          <div className="h-10 w-10 bg-black text-white rounded-xl flex items-center justify-center">
+            <GraduationCap className="h-5 w-5" />
           </div>
+          <h1 className="font-bold text-sm sm:text-lg leading-tight">
+            SMIT Connect Portal
+          </h1>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.to}
@@ -37,17 +37,23 @@ export function PublicNavbar() {
             </Link>
           ))}
         </div>
-        {/* Buttons */}
-        <div className="flex gap-3">
-          <Link to="/auth" className="px-4 py-2 text-sm border border-black rounded-xl hover:bg-black hover:text-white transition">
+
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            to="/auth"
+            className="px-4 py-2 text-sm border border-black rounded-xl hover:bg-black hover:text-white transition whitespace-nowrap"
+          >
             Student Login
           </Link>
 
-          <Link to="/admin/AdminLogin" className="px-4 py-2 text-sm bg-black text-white rounded-xl hover:opacity-80 transition">
+          <Link
+            to="/admin/AdminLogin"
+            className="px-4 py-2 text-sm bg-black text-white rounded-xl hover:opacity-80 transition whitespace-nowrap"
+          >
             Admin Login
           </Link>
         </div>
-
 
         {/* Mobile Button */}
         <button
@@ -76,13 +82,13 @@ export function PublicNavbar() {
 
           <div className="flex flex-col gap-3 pt-3">
 
-            <Link to="/auth">
+            <Link to="/auth" onClick={() => setOpen(false)}>
               <button className="w-full py-2.5 rounded-xl border border-black/20 text-sm hover:bg-black/5 transition">
                 Student Login
               </button>
             </Link>
 
-            <Link to="/admin/AdminLogin">
+            <Link to="/admin/AdminLogin" onClick={() => setOpen(false)}>
               <button className="w-full py-2.5 rounded-xl bg-black text-white text-sm hover:bg-gray-800 transition">
                 Admin Login
               </button>
