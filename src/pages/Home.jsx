@@ -35,7 +35,7 @@ export default function Home() {
     ];
 
     return (
-        <div className="min-h-screen bg-white text-black font-serif">
+        <div className="min-h-screen text-black font-serif">
 
             {/* NAVBAR */}
             <PublicNavbar />
