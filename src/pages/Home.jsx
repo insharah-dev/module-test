@@ -8,29 +8,29 @@ export default function Home() {
         {
             id: 1,
             author: "SMIT Official",
-            time: "2 hours ago",
-            content: "We are Hiring in Karachi! Are you passionate, creative, and ready to make an impact? Join our dynamic team at Saylani I.T and be part of a mission that empowers youth through technology. 📌 Open Positions: • Campus Manager(Male / Female) • Assistant Manager(Male / Female) • Network Administrator(Female) ✨ If you’re driven, dedicated, and eager to grow in a professional environment, we’d love to hear from you! 📧 Send your resume to: smit.edu@saylaniwelfare.com📍 Location: Karachi",
+            time: "21 hours ago",
+            content: "Saylani IT Summer Camp 2026 is here to transform students into future tech creators 👨‍💻",
             likes: 42,
             comments: 8,
-            img: "https://scontent.fkhi16-1.fna.fbcdn.net/v/t39.30808-6/668591108_122284397318153270_6801304540625203917_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=100&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHZ9nLaAYVomA3_uEJG0CQIW3Qzo8O17p5bdDOjw7XunpIS6xiEyL2deTambycrjSrvNcHu8L1Sr1yvqGtwnaAo&_nc_ohc=UFdnDQwbHIQQ7kNvwHpTca1&_nc_oc=AdpI-dxV1WrCQS4rD_McOzN6clBNMyJauHXEWO0klnKsHTsipBMJaExxxuAbA13B-tI&_nc_zt=23&_nc_ht=scontent.fkhi16-1.fna&_nc_gid=gTNtp6JisAVIudLCEJWjvg&_nc_ss=7a3a8&oh=00_Af1i8PfoeOHYugoRthcIUFjTcf1FHIaSQQcZG1nGGFw1-w&oe=69E3115F",
+            img: "https://scontent.fkhi16-2.fna.fbcdn.net/v/t39.30808-6/687035851_122290393394153270_5424161066642036730_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=101&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeEL7pkEXBPO87PtdgnNUWTnbWedbT0TLkttZ51tPRMuS8hZLgvR9w1CithL1cXve5-TLOn6nmCKrCTUCsl91VDF&_nc_ohc=a3ankk5_je4Q7kNvwFs04xB&_nc_oc=AdoJ8lXKAI4P45IAubq4Yg-xUSO28mzfgDVeUs_0rYJNDuc12PJtkRLmFMgLWH2nLM8&_nc_zt=23&_nc_ht=scontent.fkhi16-2.fna&_nc_gid=RiYy1BBUpf-ExGc1LK2t3w&_nc_ss=7b2a8&oh=00_Af4QuEuXhVaIAl_sg90u4keQLsMxX44v6m-QEys8vAeD7Q&oe=6A08312A",
         },
         {
             id: 2,
             author: "SMIT Official",
-            time: "1 day ago",
-            content: "Admissions Open 2026 – Techno Kids Web Development Empowering the youth of Karachi with future-ready tech skills! Join Saylani I.T and start your journey into the world of Web & Mobile App Development",
+            time: "2 day ago",
+            content: "🚀 Online Admissions Open – Saylani IT Training Program! Great news for the youth of Pakistan! 💻✨",
             likes: 128,
             comments: 23,
-            img: "https://scontent.fkhi16-2.fna.fbcdn.net/v/t39.30808-6/669849129_122284880720153270_8956990915436851042_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeG2zzcTgSKcaPTjMw4SmNQdzE2XkVeYbjvMTZeRV5huO0vmKSRgPT1HV0PXKy5gEws4Hwz390Axm2h_NmSO_aEa&_nc_ohc=7T1-TuMhv_oQ7kNvwGZIC5C&_nc_oc=Adrmm6DrmRHmtz74y2X7-gPV6qYZ2Fbw1cMZTun20VL_O9EqcTqCq6GpalcqrlIx2-w&_nc_zt=23&_nc_ht=scontent.fkhi16-2.fna&_nc_gid=0_AT1fxnCQgJrgAqCvuYaw&_nc_ss=7a3a8&oh=00_Af1q85DmPaPtSVB4IPUq_CLXqm8-Bl25P0S6ko41sK_I-A&oe=69E6D1DA",
+            img: "https://scontent.fkhi16-2.fna.fbcdn.net/v/t39.30808-6/681363512_122289160616153270_2423284892799458240_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHh5IqihbxveMynrRdf4eFv4NO583JNUMzg07nzck1QzAfbd6JJVt31_5GwB6ORqz9vDNgeT9LcLdaFJKXtQTlG&_nc_ohc=1BHLd9anN0wQ7kNvwF4R4A3&_nc_oc=AdqlwDspe-XK_s3VMPVPHbjHpgXp5rbStHVAd0vgbno3dxkV_RZUtC8iVQTepVtrpQ0&_nc_zt=23&_nc_ht=scontent.fkhi16-2.fna&_nc_gid=iWO2_kNbf59Y6Az3mJa7Dg&_nc_ss=7b2a8&oh=00_Af4Qw2wIhmA1kQsKDLQNi5gV6qeJcSGMdqujx7UkP3pQHg&oe=6A080303",
         },
         {
             id: 3,
             author: "SMIT Official",
-            time: "3 days ago",
+            time: "5 days ago",
             content: "Saylani IT Entrance Exam 2026 \n 📍 Test Locations: Islamabad & Rawalpindi 🕒 Rawalpindi Timings: 👩 Female: 10:00 AM 👨 Male: 02:00 PM",
             likes: 67,
             comments: 12,
-            img: "https://scontent.fkhi16-1.fna.fbcdn.net/v/t39.30808-6/672051119_122285596274153270_8381180479011596489_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeGWWgyoUHHAV3oeunkk4BFgzDL1lmcNWjPMMvWWZw1aM_xxJp3zzNwKQ9LE-Vy2LbYXFroYOI6USZVoQtaSUa9J&_nc_ohc=fz1vyRbxiZsQ7kNvwEJXY50&_nc_oc=AdqPP5dSsSYlq7aIX2Zb2nORsmh5iFx585bhMJ0P93KOEugtwOoaMmfdr6P1LdaqRpo&_nc_zt=23&_nc_ht=scontent.fkhi16-1.fna&_nc_gid=3Jz8-2uGA5kdV2rytg8EBw&_nc_ss=7a3a8&oh=00_Af2ME0Ch1bBe8YEiUXSLs-onMEutUlPQcVu8w26asm6lLA&oe=69E69FF2",
+            img: "https://scontent.fkhi16-1.fna.fbcdn.net/v/t39.30808-6/690673090_122290499726153270_3870506723472317542_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHkntq0T2W0R6r2B4v0ySz_qLDE7wZZv3yosMTvBlm_fH5UZe08yjdPXV1NgpDBNoyrXlNShrH7oUNa1uQLxYd4&_nc_ohc=oGLGBDGOQU0Q7kNvwG9vZyn&_nc_oc=Adr1pXArP6IOCLfkgjkhmOaSbSKALqy3OiEoG2P8cTWoN7VBjix72lQgs12RI9vm1Io&_nc_zt=23&_nc_ht=scontent.fkhi16-1.fna&_nc_gid=lYkx481JnGZbqNsHHWPetA&_nc_ss=7b2a8&oh=00_Af6JzqHAvWtAXcf32vDGhDoLW64_nM6Lxk8bcWnU1-njag&oe=6A0827ED",
         },
     ];
 
@@ -94,7 +94,7 @@ export default function Home() {
 
 
             {/* FEATURES */}
-            <section className="px-10 py-10">
+            <section className="px-10 py-15">
 
                 {/* HEADING */}
                 <div className="text-center mb-12">
@@ -113,7 +113,7 @@ export default function Home() {
                 <div className="grid md:grid-cols-3 gap-8">
 
                     {/* CARD 1 */}
-                    <div className="border border-black/10 p-6 rounded-2xl hover:shadow-lg duration-300 hover:scale-105 transition">
+                    <div className="border bg-gray-50 border-gray-50 p-6 rounded-2xl shadow-sm hover:shadow-lg duration-300 hover:scale-105 transition">
 
                         <div className="h-10 w-10 flex items-center justify-center text-white rounded-xl border border-black bg-black mb-3">
                             <User className="h-5 w-5" />
@@ -126,7 +126,7 @@ export default function Home() {
                     </div>
 
                     {/* CARD 2 */}
-                    <div className="border border-black/10 p-6 rounded-2xl hover:shadow-lg duration-300 hover:scale-105 transition">
+                    <div className="border bg-gray-50 border-gray-50 shadow-sm p-6 rounded-2xl hover:shadow-lg duration-300 hover:scale-105 transition">
 
                         <div className="h-10 w-10 flex items-center justify-center text-white rounded-xl border border-black bg-black mb-3">
                             <BookOpen className="h-5 w-5" />
@@ -139,7 +139,7 @@ export default function Home() {
                     </div>
 
                     {/* CARD 3 */}
-                    <div className="border border-black/10 p-6 rounded-2xl hover:shadow-lg duration-300 hover:scale-105 transition">
+                    <div className="border bg-gray-50 border-gray-50 shadow-sm p-6 rounded-2xl hover:shadow-lg duration-300 hover:scale-105 transition">
 
                         <div className="h-10 w-10 flex items-center justify-center text-white rounded-xl border border-black bg-black mb-3">
                             <Shield className="h-5 w-5" />
@@ -208,7 +208,7 @@ export default function Home() {
                                     <img
                                         src={post.img}
                                         alt="post"
-                                        className="w-full h-40 object-cover group-hover:scale-105 transition duration-300"
+                                        className="w-full h-48 object-cover group-hover:scale-105 transition duration-300"
                                     />
                                 </div>
                             )}
