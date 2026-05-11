@@ -16,7 +16,9 @@ const App = () => {
   return (
     <>
       <section className="bg-gray-100">
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster position="top-right" reverseOrder={false} toastOptions={{
+          duration: 3000,
+        }} />
         <Routing />
       </section>
     </>
