@@ -5,7 +5,7 @@ import { client } from "../../config/supabase";
 import { MdAccessTime } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import { FaRegEdit } from "react-icons/fa";
-
+import toast from "react-hot-toast";
 const navItems = [
   { label: "Dashboard", to: "/admin/dashboard", icon: <LayoutDashboard className="h-4 w-4" /> },
   { label: "Students", to: "/admin/students", icon: <Users className="h-4 w-4" /> },
