@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Heart, MessageCircle, Share2, BookOpen, User, Shield } from "lucide-react";
 import { PublicNavbar } from "../component/PublicNavbar";
-
+import post1 from '../assets/post1.jpg'
+import post2 from '../assets/post2.jpg'
+import post3 from '../assets/post3.jpg'
 export default function Home() {
 
     const posts = [
@@ -12,7 +14,7 @@ export default function Home() {
             content: "Saylani IT Summer Camp 2026 is here to transform students into future tech creators 👨‍💻",
             likes: 42,
             comments: 8,
-            img: "https://scontent.fkhi16-2.fna.fbcdn.net/v/t39.30808-6/687035851_122290393394153270_5424161066642036730_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=101&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeEL7pkEXBPO87PtdgnNUWTnbWedbT0TLkttZ51tPRMuS8hZLgvR9w1CithL1cXve5-TLOn6nmCKrCTUCsl91VDF&_nc_ohc=a3ankk5_je4Q7kNvwFs04xB&_nc_oc=AdoJ8lXKAI4P45IAubq4Yg-xUSO28mzfgDVeUs_0rYJNDuc12PJtkRLmFMgLWH2nLM8&_nc_zt=23&_nc_ht=scontent.fkhi16-2.fna&_nc_gid=RiYy1BBUpf-ExGc1LK2t3w&_nc_ss=7b2a8&oh=00_Af4QuEuXhVaIAl_sg90u4keQLsMxX44v6m-QEys8vAeD7Q&oe=6A08312A",
+            img: post1,
         },
         {
             id: 2,
@@ -21,7 +23,7 @@ export default function Home() {
             content: "🚀 Online Admissions Open – Saylani IT Training Program! Great news for the youth of Pakistan! 💻✨",
             likes: 128,
             comments: 23,
-            img: "https://scontent.fkhi16-2.fna.fbcdn.net/v/t39.30808-6/681363512_122289160616153270_2423284892799458240_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_eui2=AeHh5IqihbxveMynrRdf4eFv4NO583JNUMzg07nzck1QzAfbd6JJVt31_5GwB6ORqz9vDNgeT9LcLdaFJKXtQTlG&_nc_ohc=1BHLd9anN0wQ7kNvwF4R4A3&_nc_oc=AdqlwDspe-XK_s3VMPVPHbjHpgXp5rbStHVAd0vgbno3dxkV_RZUtC8iVQTepVtrpQ0&_nc_zt=23&_nc_ht=scontent.fkhi16-2.fna&_nc_gid=iWO2_kNbf59Y6Az3mJa7Dg&_nc_ss=7b2a8&oh=00_Af4Qw2wIhmA1kQsKDLQNi5gV6qeJcSGMdqujx7UkP3pQHg&oe=6A080303",
+            img: post2,
         },
         {
             id: 3,
@@ -30,7 +32,7 @@ export default function Home() {
             content: "Saylani IT Entrance Exam 2026 \n 📍 Test Locations: Islamabad & Rawalpindi 🕒 Rawalpindi Timings: 👩 Female: 10:00 AM 👨 Male: 02:00 PM",
             likes: 67,
             comments: 12,
-            img: "https://scontent.fkhi16-1.fna.fbcdn.net/v/t39.30808-6/690673090_122290499726153270_3870506723472317542_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_eui2=AeHkntq0T2W0R6r2B4v0ySz_qLDE7wZZv3yosMTvBlm_fH5UZe08yjdPXV1NgpDBNoyrXlNShrH7oUNa1uQLxYd4&_nc_ohc=oGLGBDGOQU0Q7kNvwG9vZyn&_nc_oc=Adr1pXArP6IOCLfkgjkhmOaSbSKALqy3OiEoG2P8cTWoN7VBjix72lQgs12RI9vm1Io&_nc_zt=23&_nc_ht=scontent.fkhi16-1.fna&_nc_gid=lYkx481JnGZbqNsHHWPetA&_nc_ss=7b2a8&oh=00_Af6JzqHAvWtAXcf32vDGhDoLW64_nM6Lxk8bcWnU1-njag&oe=6A0827ED",
+            img: post3,
         },
     ];
 
