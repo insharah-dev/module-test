@@ -65,7 +65,7 @@ export default function AdminCourses() {
         )
       );
       setEditModal(false);
-      alert("Course updated successfully!");
+      toast.success("Course updated successfully!");
     } else {
       console.log(error);
     }
@@ -73,7 +73,9 @@ export default function AdminCourses() {
 
   // Save/Add course
   const handleSaveCourse = async () => {
-    if (!courseName || !description || !instructor || !duration) return alert("All fields are required");
+    if (!courseName || !description || !instructor || !duration) {
+      return toast.error("All fields are required");
+    }
 
     const { data, error } = await client
       .from("AdminCourse")
@@ -83,7 +85,7 @@ export default function AdminCourses() {
     if (error) {
       console.log(error.message);
     } else {
-      alert("Course added successfully!");
+      toast.success("Course added successfully!");
       setModalOpen(false);
       setCourseName("");
       setCourseStatus(true);

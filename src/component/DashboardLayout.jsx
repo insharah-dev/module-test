@@ -3,7 +3,7 @@ import { GraduationCap, Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
 import { client } from "../config/supabase";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export function DashboardLayout({ children, navItems, title }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -43,7 +43,7 @@ export function DashboardLayout({ children, navItems, title }) {
 
   return (
     <>
-      <Toaster position="top-right" />
+  
       <div className="min-h-screen bg-white flex font-serif">
 
         {/* Overlay */}

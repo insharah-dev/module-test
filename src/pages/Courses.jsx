@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { client } from "../config/supabase";
 import { MdAccessTime } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { PublicNavbar } from "../component/PublicNavbar";
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -95,7 +95,6 @@ export default function AdminCourses() {
 
     return (
         <>
-            <Toaster position="top-right" />
             <PublicNavbar />
             <div className="space-y-6 px-6 py-5">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">

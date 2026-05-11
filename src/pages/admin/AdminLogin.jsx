@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAdmin } from "../../redux/authSlice";
 import { PublicNavbar } from "../../component/PublicNavbar";
+import toast from "react-hot-toast";
 
-import toast, { Toaster } from "react-hot-toast";
 const AdminLogin = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -69,7 +69,6 @@ const AdminLogin = () => {
             <PublicNavbar />
 
             <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-gray-50 to-gray-100">
-                <Toaster position="top-right" />
                 <form
                     onSubmit={handleLogin}
                     className="w-full max-w-lg p-10 rounded-3xl bg-white/80 backdrop-blur-lg border border-gray-200 shadow-xl space-y-6"

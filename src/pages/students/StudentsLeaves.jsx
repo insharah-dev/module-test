@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { Upload, BookOpen, ClipboardList, FileText } from "lucide-react";
 import { client } from "../../config/supabase";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function StudentLeaves() {
     const navItems = [
@@ -99,8 +99,6 @@ export default function StudentLeaves() {
 
     return (
         <DashboardLayout navItems={navItems} title="Student Dashboard">
-            <Toaster position="top-right" />
-
             <div className="space-y-8">
 
                 <div className="space-y-10 font-serif">

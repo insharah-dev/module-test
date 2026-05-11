@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DashboardLayout } from "../../component/DashboardLayout";
 import { BookOpen, Check, Eye, FileText, LayoutDashboard, Settings, Users, X } from "lucide-react";
 import { client } from "../../config/supabase";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const navItems = [
   { label: "Dashboard", to: "/admin/dashboard", icon: <LayoutDashboard className="h-4 w-4" /> },
@@ -59,8 +59,6 @@ export default function AdminLeaves() {
 
   return (
     <DashboardLayout navItems={navItems} title="Admin Panel">
-      <Toaster position="top-right" />
-
       <div>
         <h2 className="text-3xl mb-2 font-serif font-bold">Leave Management</h2>
         <p className="text-md text-gray-800 mb-8 font-light">Review and manage student leave requests</p>
